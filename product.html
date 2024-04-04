@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="product.css">
+    <title>Products</title>
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html" class="active">Home</a>
+        <a href="product.html">Products</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="about.html">About Us</a>
+        <a href="history.html">History</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    <div>
+        <div id="confirm">
+            <button onclick="confirmOrder()">Confirm Orders</button>
+        </div>
+        <div id="ordersSummary" style="font-size: 20px; color:white;"></div>
+    </div>
+
+    <h1 id="our">Our Products</h1>
+    <div id="info">
+
+        <div class="img" style="cursor:pointer;" onclick="order('women flat shoes', '500.00')">
+            <img src="1.jpg">
+            <div class="img-desc">
+                <h4><b>Name:</b> women flat shoes</h4>
+                <p><b>Price:</b> ₱ 500/-</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <div class="img" style="cursor:pointer;" onclick="order('White Sports Shoes', '700.00')">
+            <img src="2.jpg">
+            <div class="img-desc">
+                <h4><b>Name:</b> White Sports Shoes</h4>
+                <p><b>Price:</b> ₱ 700/-</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <div class="img" style="cursor:pointer;" onclick="order('Black Formal Lace Shoes', '600.00')">
+            <img src="3.jpg">
+            <div class="img-desc">
+                <h4><b>Name:</b> Black Formal Lace Shoes</h4>
+                <p><b>Price:</b> ₱ 600/-</p>
+                <button >Add to cart</button>
+            </div>
+        </div>
+
+        <div class="img" style="cursor:pointer;" onclick="order('Sneakers', '650.00')">
+            <img src="4.jpg">
+            <div class="img-desc">
+                <h4><b>Name:</b> Sneakers</h4>
+                <p><b>Price:</b>₱ 650/-</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <div class="img" style="cursor:pointer;" onclick="order('Football Shoes', '750.00')">
+            <img src="5.jpg">
+            <div class="img-desc">
+                <h4><b>Name:</b> Football Shoes</h4>
+                <p><b>Price:</b>₱ ₱ 750/-</p>
+                <button >Add to cart</button>
+            </div>
+        </div>
+
+        <div class="img" style="cursor:pointer;" onclick="order('Brown Formal Shoes', '600.00')">
+            <img src="6.jpg">
+            <div class="img-desc">
+                <h4><b>Name:</b> Brown Formal Shoes </h4>
+                <p><b>Price:</b> ₱ 600/-</p>
+                <button >Add to cart</button>
+            </div>
+        </div>
+
+        <div class="img" style="cursor:pointer;" onclick="order('Black Sports Shoes', '750.00')">
+            <img src="7.jpg">
+            <div class="img-desc">
+                <h4><b>Name:</b> Black Sports Shoes</h4>
+                <p><b>Price:</b> ₱ 750/-</p>
+                <button >Add to cart</button>
+            </div>
+        </div>
+
+        <div class="img" style="cursor:pointer;" onclick="order('strap boots high top Shoes', '750.00')">
+            <img src="8.jpg">
+            <div class="img-desc">
+                <h4><b>Name:</b> strap boots high top Shoes</h4>
+                <p><b>Price:</b> ₱ 750/-</p>
+                <button >Add to cart</button>
+            </div>
+        </div>
+
+        <div class="img" style="cursor:pointer;" onclick="order('Brown Formal Lace Shoes', '600.00')">
+            <img src="9.jpg">
+            <div class="img-desc">
+                <h4><b>Name:</b>Brown Formal Lace Shoes</h4>
+                <p><b>Price:</b> ₱ 600/-</p>
+                <button >Add to cart</button>
+            </div>
+        </div>
+
+        <div class="img" style="cursor:pointer;" onclick="order('Yellow Sneakers', '800.00')">
+            <img src="10.jpg">
+            <div class="img-desc">
+                <h4><b>Name:</b>Yellow Sneakers</h4>
+                <p><b>Price:</b> ₱ 800/-</p>
+                <button >Add to cart</button>
+            </div>
+        </div>
+
+        <div class="img" style="cursor:pointer;" onclick="order('Brown Formal Shoes', '800.00')">
+            <img src="11.png">
+            <div class="img-desc">
+                <h4><b>Name:</b> Brown Formal Shoes</h4>
+                <p><b>Price:</b> ₱ 800/-</p>
+                <button >Add to cart</button>
+            </div>
+        </div>
+
+        <div class="img" style="cursor:pointer;" onclick="order('Black Formal Shoes', '600.00')">
+            <img src="12.png">
+            <div class="img-desc">
+                <h4><b>Name:</b> Black Formal Shoes</h4>
+                <p><b>Price:</b> ₱ 600/-</p>
+                <button >Add to cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var orders = []; // Array to hold orders
+
+        function order(pastaName, price) {
+            var quantity = parseInt(prompt("Enter quantity for " + pastaName, "1"));
+            if (!isNaN(quantity) && quantity > 0) {
+                orders.push({
+                    pastaName: pastaName,
+                    price: price,
+                    quantity: quantity
+                });
+                updateOrdersSummary();
+            } else {
+                alert("Please enter a valid quantity.");
+            }
+        }
+        
+        function updateOrdersSummary() {
+            var summaryContainer = document.getElementById('ordersSummary');
+            var summaryHTML = '<h3>Orders Summary:</h3>';
+            if (orders && orders.length > 0) {
+                summaryHTML += '<ul>';
+                orders.forEach(function(order) {
+                    summaryHTML += '<li>' + order.quantity + ' x ' + order.pastaName + ' - ' + '₱' + (order.price * order.quantity).toFixed(2) + '</li>';
+                });
+                summaryHTML += '</ul>';
+            } else {
+                summaryHTML += '<p>No orders added yet.</p>';
+            }
+            summaryContainer.innerHTML = summaryHTML;
+        }
+        
+        function confirmOrder() {
+            if (orders.length > 0) {
+                localStorage.setItem("orders", JSON.stringify(orders));
+                window.open("transaction.html", "_blank");
+            } else {
+                alert("Please add some orders before confirming.");
+            }
+        }
+        
+        </script>
+        
+
+</body>
+
+</html>

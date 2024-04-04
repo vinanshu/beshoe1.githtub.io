@@ -1,0 +1,35 @@
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#4e2804 ;
+}
+
+
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 50px;
+    background-color: rgba(127, 255, 212, 0.416);
+    color: black;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+.container {
+    text-align: center;
+}
+
+a {
+    color: blue;
+}
